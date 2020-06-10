@@ -1,7 +1,5 @@
 # Personal-Space
-P1 Game by Chris Goss
-
-# "PERSONAL SPACE"
+<br>
 Continuous vertical scrolling game, wherein the Player collects Stars and avoids Aliens.
 * Mobile-oriented design
 * Consistent, fingertip-size targets
