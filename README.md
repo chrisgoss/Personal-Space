@@ -1,5 +1,5 @@
 # Personal-Space
-<br>
+
 Continuous vertical scrolling game, wherein the Player collects Stars and avoids Aliens.
 * Mobile-oriented design
 * Consistent, fingertip-size targets
