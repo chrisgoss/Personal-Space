@@ -2,12 +2,15 @@ html,body {
     margin: 0;
     padding: 0;
     text-align: center;    
-    font-family: 'Press Start 2P', monospace;
+    font-family: 'Press Start 2P';
+    background-color: darkblue;
+    
 }
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
+    letter-spacing: .5em;
+    line-height: 1.5em;
     color: gold;
-    padding: 10px;
     margin-left: 5px;
 }
 div {
@@ -15,20 +18,16 @@ div {
     align-items: center;
     justify-content: center;
 }
-button{
-    font-family: 'Press Start 2P', monospace;
-    font-size: 1rem;
-    margin: 40px;
-    padding: 10px 30px;
-    outline: 8px solid;
-}
-body {
-    background-color: darkblue;
-    background-size: cover;
-    background-repeat: space;
-}
 canvas {
-    background-color: dodgerblue;
+    background-color: darkblue;
     outline: 10px solid;
-    padding: 20px;
+}
+button{
+    font-family: 'Press Start 2P';
+    font-size: 1.5rem;
+    background-color: gray;
+    margin: 50px;
+    width: 200px;
+    height: 50px;
+    outline: 8px solid;
 }

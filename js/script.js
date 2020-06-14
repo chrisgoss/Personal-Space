@@ -4,4 +4,4 @@ let canvas = document.getElementById("gameScreen");
 
 let ctx = canvas.getContext("2d");
 
-ctx.clearRect(0, 0, 400, 600);
+ctx.clearRect(0, 0, 500, 600);
