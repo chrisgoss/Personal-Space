@@ -4,19 +4,19 @@ html,body {
     text-align: center;    
     font-family: 'Press Start 2P';
     background-color: darkblue;
-    
 }
 h1 {
     font-size: 2rem;
     letter-spacing: .5em;
     line-height: 1.5em;
     color: gold;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 div {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
 }
 canvas {
     background-color: darkblue;
@@ -24,10 +24,10 @@ canvas {
 }
 button{
     font-family: 'Press Start 2P';
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: gray;
     margin: 50px;
-    width: 200px;
+    width: 150px;
     height: 50px;
     outline: 8px solid;
 }
