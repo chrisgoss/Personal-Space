@@ -2,20 +2,40 @@ console.log('Hello Chris, ya dumb betch!');
 
 let movementDisplay = document.getElementById("movement");
 let gameStatus = document.getElementById("status");
-var canvas = document.getElementById("game");
+var gameZone = document.getElementById("gameZone");
+let ctx = gameZone.getContext("2d");
+ctx.clearRect(0, 0, 500, 500);
 
-let ctx = game.getContext("2d");
 
-function gameObject(text, x, y){
-    this.fillText = text;
+
+
+
+function gameObject(x, y){
+    //this.fillText = text;
     this.x = x;
     this.y = y;
-    this.render = function(){
-        ctx.fillText(this.text, this.x, this.y)
+    this.render = function(text){
+        ctx.font = "20px Arial"
+        ctx.fillText(text, this.x, this.y)
+    }
+    this.playerMove = function(){
+        //user presses a key and changes this.x and this.y
+        //user presses D this.x += 5;
+    }
+    this.alienMove = function(){
+        //updates this.x and this.y
+    }
+    this.starMove = function(){
+        //move negatively along the y-axis
     }
 }
 
-let rocket = new gameObject("🚀", 10, 10)
-console.log("blastoff!");
-let alien = new gameObject("👽", 20, 20)
+
+
+
+
+let rocket = new gameObject(100, 100)
+    rocket.playerMove();
+    rocket.render("🚀")
+let alien = new gameObject("👽", 20, 0)
 let star = new gameObject("⭐️", 30, 30)
