@@ -7,7 +7,6 @@ let ctx = gameZone.getContext("2d");
 ctx.clearRect(0, 0, 500, 500);
 
 function gameObject(x, y, color, width, height){
-    //this.fillText = text;
     this.x = x;
     this.y = y;
     this.color = color;
@@ -26,9 +25,7 @@ let star = new gameObject(300, 300, "gold", 50, 50);
 
 //main game loop
 const gameTick = () => {
-    ctx.clearRect(0, 0, game.width, game.height)
-    //need more practice w backticking strings
-    movementDisplay.innerText = `X: ${player.x} Y: ${player.y}`
+    ctx.clearRect(0, 0, gameZone.width, gameZone.height)
     if (alien.alive){
         detectHit()
     } else {
@@ -64,57 +61,54 @@ let gameLoop = setInterval(gameTick, 60);
 const movementHandler = (e) => {
     switch(e.key){
         case "w":
-            player.y--
+            player.y = player.y - 10;
             break;
         case "a":
-            player.x--
+            player.x = player.x - 10;
             break;
         case "s":
-            player.y++
+            player.y = player.y + 10;
             break;
         case "d":
-            player.x++
+            player.x = player.x + 10;
             break;
     }
 }
 document.addEventListener("keydown", movementHandler);
 
-astronaut.render()
-    let player = {
-        x: 250,
-        y: -300,
-        color: "gray",
-        width: 50,
-        height: 50,
-        alive: true,
-        render: function(){
-            ctx.fillStyle = this.color
-            ctx.fillRect(this.x, this.y, this.width, this.height)
-        }
-    }
-alien.render()
-    let alien = {
-        x: 250,
-        y: -100,
-        color: "green",
-        width: 50,
-        height: 50,
-        alive: true,
-        render: function(){
-            ctx.fillStyle = this.color
-            ctx.fillRect(this.x, this.y, this.width, this.height)
-        }
-    }
-star.render()
-    let star = {
-        x: 250,
-        y: -200,
-        color: "gold",
-        width: 50,
-        height: 50,
-        alive: true,
-        render: function(){
-            ctx.fillStyle = this.color
-            ctx.fillRect(this.x, this.y, this.width, this.height)
-        }
-    }
+// let player = {
+//     x: 250,
+//     y: -300,
+//     color: "gray",
+//     width: 50,
+//     height: 50,
+//     alive: true,
+//     render: function(){
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(this.x, this.y, this.width, this.height)
+//     }
+// }
+// let alien = {
+//     x: 250,
+//     y: -100,
+//     color: "green",
+//     width: 50,
+//     height: 50,
+//     alive: true,
+//     render: function(){
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(this.x, this.y, this.width, this.height)
+//     }
+// }
+// let star = {
+//     x: 250,
+//     y: -200,
+//     color: "gold",
+//     width: 50,
+//     height: 50,
+//     alive: true,
+//     render: function(){
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(this.x, this.y, this.width, this.height)
+//     }
+// }
