@@ -18,16 +18,6 @@ function gameObject(x, y, color, width, height){
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
-    // this.playerMove = function(){
-    //     //user presses a key and changes this.x and this.y
-    //     //user presses D this.x += 5;
-    // }
-    // this.alienMove = function(){
-    //     //updates this.x and this.y
-    // }
-    // this.starMove = function(){
-    //     //move negatively along the y-axis
-    // }
 }
 
 //create objects
@@ -38,7 +28,8 @@ let star = new gameObject(300, 300, "gold", 50, 50);
 //main game loop
 const gameTick = () => {
     ctx.clearRect(0, 0, game.width, game.height)
-    movementDisplay.innerText = ""
+    //why do we use backticks here instead of quotes???
+    movementDisplay.innerText = `X: ${player.x} Y: ${player.y}`
     if (alien.alive){
         detectHit()
     } else {
@@ -69,9 +60,8 @@ const endGame = () => {
 
 let gameLoop = setInterval(gameTick, 60);
 
-
 //add functionality for arrow keys
-//add functionality for touch recognition
+//add functionality for mobile touch recognition
 const movementHandler = (e) => {
     switch(e.key){
         case "w":
@@ -89,3 +79,43 @@ const movementHandler = (e) => {
     }
 }
 document.addEventListener("keydown", movementHandler);
+
+player.render()
+    let player = {
+        x: 250,
+        y: -300,
+        color: "gray",
+        width: 50,
+        height: 50,
+        alive: true,
+        render: function(){
+            ctx.fillStyle = this.color
+            ctx.fillRect(this.x, this.y, this.width, this.height)
+        }
+    }
+alien.render()
+    let alien = {
+        x: 250,
+        y: -100,
+        color: "green",
+        width: 50,
+        height: 50,
+        alive: true,
+        render: function(){
+            ctx.fillStyle = this.color
+            ctx.fillRect(this.x, this.y, this.width, this.height)
+        }
+    }
+star.render()
+    let star = {
+        x: 250,
+        y: -200,
+        color: "gold",
+        width: 50,
+        height: 50,
+        alive: true,
+        render: function(){
+            ctx.fillStyle = this.color
+            ctx.fillRect(this.x, this.y, this.width, this.height)
+        }
+    }
