@@ -10,19 +10,19 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 ## WIREFRAME
 ![](https://i.imgur.com/IwWzCY5.jpg)
 ## MINIMUM VIABLE PRODUCT (MVP)
-* Canvas game board
-* WASD & arrow mobility
-* Objects
-    * Random (-)Y-trajectory Stars
-    * Random (+/-)X-trajectory Aliens
-* State Button (load screen in neutral, then flips start/stop)
-* Score Button (0 = game over)
-* Collision Detection
-    * Stars +1 score
-    * Aliens -5 score
+☑ Canvas game board
+☑ WASD & arrow mobility
+☑ Objects
+    ☑ Stars (completed)
+    ☑ Aliens (incomplete w/o multiple possible trajectory)
+☐ State Button (load screen in neutral, then flips start/stop)
+☐ Score Button (+1 stars, -5 aliens, 0 = game over)
+☑ Collision Detection
+☑ End game on alien impact
 ## STRETCH
 * EndGame Condition
     * Score = 0
+* Add random x-trajectory for Aliens
 * Deploy Special
     * Use # of score to deploy alienEMP with duration
 * Image Variations (3 or 5 randomized)
@@ -38,27 +38,15 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
         * Player speed increase
     * Lighting
         * Objects double value
-* Attack
-    * Spacebar keybinding
-    * Destroy on impact
 ## TECH
-* HTML
-    * Title
-    * Canvas
-    * Byline
+* HTML Canvas
 * CSS
-    * Root
-        * Font
-        * Theme colors
-    * Start/Stop button
-    * Score display
 * JS
     * Button binding
         * Start/Stop game 
-        * Score display
+        * Score display / deploy special
     * Player movement keybinding
-        * WASD/Arrows
-        * Spacebar to attack if applicable
+    * 
     * Object trajectory
     * Collision detection
     * Win/Lose conditions
@@ -66,8 +54,6 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 * Visual
     * Background image
     * Player
-        * Ship
-        * Lazer
     * Objects
         * Star
         * Alien
@@ -84,7 +70,6 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
     * EndGame
     * Collect
     * Damage Taken
-    * Damage Dealt
     * Item effects
         * Shield
         * Speed

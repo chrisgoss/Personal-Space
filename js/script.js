@@ -69,6 +69,11 @@ function gameObject(x, y, color, width, height){
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
+
+
+
+
+
 function alienObject(x, y, color, width, height){
     this.x = x;
     this.y = y;
@@ -120,11 +125,6 @@ const alienHit = () => {
                     endGame()
                     }
 }
-
-
-
-
-
 // const starHit = () => {
 //     if(player.x + player.width > star.x
 //         && player.x < star.x + star.width
