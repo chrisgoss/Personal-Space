@@ -10,15 +10,15 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 ## WIREFRAME
 ![](https://i.imgur.com/IwWzCY5.jpg)
 ## MINIMUM VIABLE PRODUCT (MVP)
-☑ Canvas game board
-☑ WASD & arrow mobility
-☑ Objects
-    ☑ Stars (completed)
-    ☑ Aliens (incomplete w/o multiple possible trajectory)
-☐ State Button (load screen in neutral, then flips start/stop)
-☐ Score Button (+1 stars, -5 aliens, 0 = game over)
-☑ Collision Detection
-☑ End game on alien impact
+* Canvas game board
+* WASD & arrow mobility
+* Objects
+    * Stars (completed)
+    * Aliens (incomplete w/o multiple possible trajectory)
+* State Button (load screen in neutral, then flips start/stop)
+* Score Button (+1 stars, -5 aliens, 0 = game over)
+* Collision Detection
+* End game on alien impact
 ## STRETCH
 * EndGame Condition
     * Score = 0
