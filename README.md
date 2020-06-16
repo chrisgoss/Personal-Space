@@ -10,20 +10,21 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 ## WIREFRAME
 ![](https://i.imgur.com/IwWzCY5.jpg)
 ## MINIMUM VIABLE PRODUCT (MVP)
-* Start&Stop Button
-* Score Tracker&Display
 * Canvas game board
-* WASD&arrow mobility
-* Background image
+* WASD & arrow mobility
 * Objects
     * Random (-)Y-trajectory Stars
     * Random (+/-)X-trajectory Aliens
+* State Button (load screen in neutral, then flips start/stop)
+* Score Button (0 = game over)
 * Collision Detection
     * Stars +1 score
     * Aliens -5 score
+## STRETCH
 * EndGame Condition
     * Score = 0
-## STRETCH
+* Deploy Special
+    * Use # of score to deploy alienEMP with duration
 * Image Variations (3 or 5 randomized)
     * Stars
     * Aliens
@@ -95,3 +96,9 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 * Canvas maximum Object/Item count
 * Item effects
 * Attack capability
+## SOURCES
+* Canvas Crawler for dem boxes
+* TicTacToe for gameState button (load game in neutral)
+* TempConverter for gameScore button (display score on button, deploy special on click)
+* Weston for always 'splainin dem fn's
+* Karly & Sarah for Mommin' me
