@@ -46,7 +46,6 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
         * Start/Stop game 
         * Score display / deploy special
     * Player movement keybinding
-    * 
     * Object trajectory
     * Collision detection
     * Win/Lose conditions
