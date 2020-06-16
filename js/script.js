@@ -6,6 +6,10 @@ var gameZone = document.getElementById("gameZone");
 let ctx = gameZone.getContext("2d");
 ctx.clearRect(0, 0, 500, 500);
 
+
+
+
+
 function gameObject(x, y, color, width, height){
     this.x = x;
     this.y = y;
@@ -57,10 +61,14 @@ let player = new gameObject(225, 300, "gray", 50, 50);
 let alien = new alienObject(0, 0, "green", 50, 50);
 let star = new starObject(0, 0, "gold", 50, 50);
 
+
+
+
+
 const gameTick = () => {
     ctx.clearRect(0, 0, gameZone.width, gameZone.height)
-    if (alien.alive){
-        detectHit()
+    if (player.alive){
+        alienHit()
     } else {
         clearInterval(gameLoop)
     }
@@ -69,21 +77,32 @@ const gameTick = () => {
     star.render()
 }
 
-const detectHit = () => {
-    if(player.x + player.width > alien.x
-        && player.x < alien.x + alien.width
-            && player.y < alien.y + alien.height
-                && player.y + player.height > alien.y){
-                    console.log("ABDUCTION!")
-                    }
-}
+let gameLoop = setInterval(gameTick, 60);
 
 const endGame = () => {
     clearInterval(gameLoop)
     console.log("GAME OVER")
 }
+const alienHit = () => {
+    if(player.x + player.width > alien.x
+        && player.x < alien.x + alien.width
+            && player.y < alien.y + alien.height
+                && player.y + player.height > alien.y){
+                    endGame()
+                    }
+}
+const starHit = () => {
+    if(player.x + player.width > star.x
+        && player.x < star.x + star.width
+            && player.y < star.y + star.height
+                && player.y + player.height > star.y){
+                    endGame()
+                    }
+}
 
-let gameLoop = setInterval(gameTick, 60);
+
+
+
 
 const movementHandler = (e) => {
     switch(e.key){
