@@ -20,7 +20,6 @@ function gameObject(x, y, color, width, height){
     }
 }
 
-//create objects
 let player = new gameObject(225, 300, "gray", 50, 50);
 let alien = new gameObject(100, 100, "green", 50, 50);
 let star = new gameObject(300, 300, "gold", 50, 50);
@@ -28,7 +27,7 @@ let star = new gameObject(300, 300, "gold", 50, 50);
 //main game loop
 const gameTick = () => {
     ctx.clearRect(0, 0, game.width, game.height)
-    //why do we use backticks here instead of quotes???
+    //need more practice w backticking strings
     movementDisplay.innerText = `X: ${player.x} Y: ${player.y}`
     if (alien.alive){
         detectHit()
@@ -80,7 +79,7 @@ const movementHandler = (e) => {
 }
 document.addEventListener("keydown", movementHandler);
 
-player.render()
+astronaut.render()
     let player = {
         x: 250,
         y: -300,
