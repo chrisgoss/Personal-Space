@@ -1,3 +1,17 @@
+//TODO: Make button activate game
+
+//TODO: Make button show score
+
+//TODO: Make alien decrement score
+
+//TODO: Make stars increment score
+
+//TODO: Make lose condition
+
+
+
+
+
 var gameZone = document.getElementById("gameZone");
 var stateBtn = document.getElementById("stateBtn");
 var scoreBtn = document.getElementById("scoreBtn");
@@ -20,6 +34,8 @@ const movementHandler = (e) => {
         case "d":
             player.x = player.x + 50;
             break;
+
+        //FIXME: recognize arrow movement keys
         // case "38":
         //     player.y = player.y - 50;
         //     break;
@@ -125,6 +141,10 @@ const alienHit = () => {
                     endGame()
                     }
 }
+
+
+
+//FIXME: star collision recognition
 // const starHit = () => {
 //     if(player.x + player.width > star.x
 //         && player.x < star.x + star.width
