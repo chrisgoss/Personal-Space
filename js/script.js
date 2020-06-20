@@ -1,11 +1,3 @@
-//TODO: Make button activate game -- add event listeners to wasd again 
-// BUGGIE: interval not clearing properly so the interval is like doubled or some shit 
-
-//TODO: Make button show score
-
-//TODO: Make lose condition score=<0
-
-
 
 var isGameOver = false;
 var gameZone = document.getElementById("gameZone");
@@ -16,7 +8,7 @@ let gameState = document.getElementById("State");
 let ctx = gameZone.getContext("2d");
 ctx.clearRect(0, 0, 500, 500);
 
-var score = 0
+var score = 10;
 
 const movementHandler = (e) => {
     switch(e.key){
@@ -49,11 +41,14 @@ const movementHandler = (e) => {
     }
 }
 
+
+
 //starting right when page loads
 let player = new gameObject(225, 300, "gray", 50, 50);
 let alien = new alienObject(this.x = Math.random() * gameZone.width, 0, "green", 50, 50);
 let star = new starObject(this.x = Math.random() * gameZone.width, 0, "gold", 50, 50);
 stateBtn.addEventListener("click", startShit)
+stateBtn.innerText = "START";
 
 
 
@@ -63,7 +58,7 @@ const gameTick = () => {
         player.render()
         alien.render()
         star.render()
-
+        scoreBtn.innerText = score
         if (score >= 0){
             checkAlienCollision()
             checkStarCollision()
@@ -84,6 +79,7 @@ function startShit(event) {
     star.x = Math.random() * gameZone.width;
     star.y = 0;
     // activate wasd keys here homie 
+    stateBtn.innerText = "RESTART"
     document.addEventListener("keydown", movementHandler);
     const gameLoop = setInterval(gameTick, 60);
     console.log(event.target)
@@ -91,8 +87,6 @@ function startShit(event) {
     isGameOver = false;
     // remove this event listener
 }
-
-
 
 
 
@@ -165,8 +159,14 @@ const endGame = () => {
     document.removeEventListener("keydown", movementHandler);
     stateBtn.addEventListener("click", startShit);
     isGameOver = true;
+    stateBtn.innerText = "GAME OVER"
     console.log("GAME OVER")
 }
+
+
+
+
+
 const checkAlienCollision = () => {
     if(player.x + player.width > alien.x
         && player.x < alien.x + alien.width
