@@ -1,4 +1,3 @@
-
 var isGameOver = false;
 var gameZone = document.getElementById("gameZone");
 var stateBtn = document.getElementById("stateBtn");
@@ -43,12 +42,17 @@ const movementHandler = (e) => {
 
 
 
+
+
 //starting right when page loads
 let player = new gameObject(225, 300, "gray", 50, 50);
 let alien = new alienObject(this.x = Math.random() * gameZone.width, 0, "green", 50, 50);
 let star = new starObject(this.x = Math.random() * gameZone.width, 0, "gold", 50, 50);
 stateBtn.addEventListener("click", startShit)
 stateBtn.innerText = "START";
+scoreBtn.innerText = "SCORE";
+
+
 
 
 
@@ -59,7 +63,7 @@ const gameTick = () => {
         alien.render()
         star.render()
         scoreBtn.innerText = score
-        if (score >= 0){
+        if (score > 0){
             checkAlienCollision()
             checkStarCollision()
         } else {
@@ -68,21 +72,19 @@ const gameTick = () => {
     } 
 }
 
-// button wrapping this to call the game loop to start
-// statebtn to do the thing 
-// event listener that would call vvvvv 
+
+
+
 
 function startShit(event) {
     alien.x = Math.random() * gameZone.width;
     alien.y = 0;
-
     star.x = Math.random() * gameZone.width;
     star.y = 0;
     // activate wasd keys here homie 
     stateBtn.innerText = "RESTART"
     document.addEventListener("keydown", movementHandler);
     const gameLoop = setInterval(gameTick, 60);
-    console.log(event.target)
     event.target.removeEventListener("click", startShit)
     isGameOver = false;
     // remove this event listener
@@ -159,8 +161,8 @@ const endGame = () => {
     document.removeEventListener("keydown", movementHandler);
     stateBtn.addEventListener("click", startShit);
     isGameOver = true;
-    stateBtn.innerText = "GAME OVER"
-    console.log("GAME OVER")
+    stateBtn.innerText = "GAME"
+    scoreBtn.innerText = "OVER"
 }
 
 
@@ -174,29 +176,23 @@ const checkAlienCollision = () => {
                 && player.y + player.height > alien.y){
                     // DECREMENTTTTT
                     alien.alive = false;
-                    console.log('not yeet')
                     }
     if (alien.prevAlive === true && alien.alive === false) {
         score -= 5
-        console.log('score', score)
+        console.log("-5 =", score)
     }
     alien.prevAlive = alien.alive;
 }
-
 const checkStarCollision = () => {
-    // we collidin'
     if(player.x + player.width > star.x
         && player.x < star.x + star.width
             && player.y < star.y + star.height
                 && player.y + player.height > star.y){
-                    // inCREMENTTTTT
                     star.alive = false;
-                    console.log('yeet')
                     }
-
     if (star.prevAlive === true && star.alive === false) {
         score += 1
-        console.log('score', score)
+        console.log("+1 =", score)
     }
     star.prevAlive = star.alive;
 }
