@@ -2,12 +2,16 @@ var isGameOver = false;
 var gameZone = document.getElementById("gameZone");
 var stateBtn = document.getElementById("stateBtn");
 var scoreBtn = document.getElementById("scoreBtn");
+var score = 10;
+
 let movementDisplay = document.getElementById("movement");
 let gameState = document.getElementById("State");
 let ctx = gameZone.getContext("2d");
 ctx.clearRect(0, 0, 500, 500);
 
-var score = 10;
+
+
+
 
 const movementHandler = (e) => {
     switch(e.key){
