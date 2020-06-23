@@ -22,6 +22,7 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 * EndGame Condition
     * Score = 0
 ## STRETCH
+* Objects invisible on collision, reappear at top of screen (0y).
 * Deploy Special
     * Use # of score to deploy alienEMP with duration
 * Image Variations (3 or 5 randomized)

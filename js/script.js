@@ -1,8 +1,12 @@
 ///////////////////////// STRETCH GOALS FOR DAYS!!!!!
+// FIXME: prevent player walking off Canvas into the abyss
+// TODO: add red color-change to Score when score <= 5
+// TODO: Objects invisible on collision, but continue on default trajectory
 // TODO: add additional game features (alien1s/stars of various speed/value, and items/items of various effects)
 // TODO: mutiple Objects on Canvas: loop w restrictions how little/much objects visible, generate objs within loop
 // TODO: ^^^ separate array of properties (colors, speed) Math.random OR integers
 /////////////////////////
+
 
 
 var isGameOver = false;
@@ -14,10 +18,10 @@ let movementDisplay = document.getElementById("movement");
 let gameState = document.getElementById("State");
 let ctx = gameZone.getContext("2d");
 ctx.clearRect(0, 0, 500, 500);
+stateBtn.addEventListener("click", startShit)
+stateBtn.innerText = "START";
+scoreBtn.innerText = "SCORE";
 let gameLoop;
-
-
-
 const movementHandler = (e) => {
     // IF THERE IS A KEYBOARD EVENT HAPPENING WHEN THE GAME WINDOW IS HIGHLIGHTED, STILL ACTIVATE GAME MOVEMENT (YOSHI!)
     e = e || window.event;
@@ -55,23 +59,8 @@ const movementHandler = (e) => {
 
 
 ///////////////////////////////////////////////////////////////////////////
-// FIXME: PREVENT PLAYER MOVEMENT DISAPPEARING OFF CANVAS
+///////////////////////// START GAME /////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-
-
-
-// GAME STARTS WHEN BUTTON IS CLICKED
-let player = new gameObject(225, 400, "gray", 50, 50);
-let alien1 = new alien1Object(this.x = Math.random() * gameZone.width, 0, "green", 50, 50);
-let alien2 = new alien2Object(this.x = Math.random() * gameZone.width, 0, "crimson", 50, 50);
-let star = new starObject(this.x = Math.random() * gameZone.width, 0, "gold", 50, 50);
-stateBtn.addEventListener("click", startShit)
-stateBtn.innerText = "START";
-scoreBtn.innerText = "SCORE";
-
-
-
-//DIFFERENT FROM GAMELOOP, WHICH GAVE ME TROUBLES PREVIOUSLY WITH RESTARTING GAME
 const gameTick = () => {
     if (!isGameOver) {
         ctx.clearRect(0, 0, gameZone.width, gameZone.height)
@@ -89,9 +78,30 @@ const gameTick = () => {
         }
     } 
 }
+function startShit(event) {
+    isGameOver = false;
+    score = 10;
+    alien1.x = Math.random() * gameZone.width;
+    alien1.y = 0;
+    alien2.x = Math.random() * gameZone.width;
+    alien2.y = 0;
+    star.x = Math.random() * gameZone.width;
+    star.y = 0;
+    stateBtn.innerText = "GAME ON!"
+    document.addEventListener("keydown", movementHandler);
+    gameLoop = setInterval(gameTick, 60);
+    stateBtn.removeEventListener("click", startShit)
+}
 
 
 
+///////////////////////////////////////////////////////////////////////////
+///////////////////////// GAME OBJECTS /////////////////////////
+///////////////////////////////////////////////////////////////////////////
+let player = new gameObject(225, 400, "gray", 50, 50);
+let alien1 = new alien1Object(this.x = Math.random() * gameZone.width, 0, "forestgreen", 50, 50);
+let alien2 = new alien2Object(this.x = Math.random() * gameZone.width, 0, "green", 50, 50);
+let star = new starObject(this.x = Math.random() * gameZone.width, 0, "gold", 50, 50);
 function gameObject(x, y, color, width, height){
     this.x = x;
     this.y = y;
@@ -168,24 +178,9 @@ function starObject(x, y, color, width, height){
 
 
 
-function startShit(event) {
-    isGameOver = false;
-    score = 10;
-    alien1.x = Math.random() * gameZone.width;
-    alien1.y = 0;
-    alien2.x = Math.random() * gameZone.width;
-    alien2.y = 0;
-    star.x = Math.random() * gameZone.width;
-    star.y = 0;
-    stateBtn.innerText = "GAME ON!"
-    document.addEventListener("keydown", movementHandler);
-    gameLoop = setInterval(gameTick, 60);
-    stateBtn.removeEventListener("click", startShit)
-}
-
-
-
-// CHECK FOR COLLISIONS
+///////////////////////////////////////////////////////////////////////////
+///////////////////////// COLLISIONS AND ENDBAME /////////////////////////
+///////////////////////////////////////////////////////////////////////////
 const checkalien1Collision = () => {
     if(player.x + player.width > alien1.x
         && player.x < alien1.x + alien1.width
@@ -194,12 +189,11 @@ const checkalien1Collision = () => {
                     alien1.alive = false;
                     }
     if (alien1.prevAlive === true && alien1.alive === false) {
-        score -= 5
-        console.log("-5 =", score)
+        score -= 2
+        console.log("-2 =", score)
     }
     alien1.prevAlive = alien1.alive;
 }
-
 const checkalien2Collision = () => {
     if(player.x + player.width > alien2.x
         && player.x < alien2.x + alien2.width
@@ -208,12 +202,11 @@ const checkalien2Collision = () => {
                     alien2.alive = false;
                     }
     if (alien2.prevAlive === true && alien2.alive === false) {
-        score -= 5
-        console.log("-5 =", score)
+        score -= 3
+        console.log("-3 =", score)
     }
     alien2.prevAlive = alien2.alive;
 }
-
 const checkStarCollision = () => {
     if(player.x + player.width > star.x
         && player.x < star.x + star.width
@@ -227,10 +220,6 @@ const checkStarCollision = () => {
     }
     star.prevAlive = star.alive;
 }
-
-
-
-// ENDGAME W RESTART FUNCTIONALITY
 const endGame = () => {
     clearInterval(gameLoop)
     document.removeEventListener("keydown", movementHandler);
