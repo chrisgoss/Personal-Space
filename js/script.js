@@ -1,6 +1,5 @@
 ///////////////////////// STRETCH GOALS FOR DAYS!!!!!
 // FIXME: prevent player walking off Canvas into the abyss
-// TODO: add red color-change to Score when score <= 5
 // TODO: Objects invisible on collision, but continue on default trajectory
 // TODO: add additional game features (alien1s/stars of various speed/value, and items/items of various effects)
 // TODO: mutiple Objects on Canvas: loop w restrictions how little/much objects visible, generate objs within loop
@@ -69,7 +68,12 @@ const gameTick = () => {
         alien2.render()
         star.render()
         scoreBtn.innerText = score
-        if (score > 0){
+        if (score < 5) {
+            scoreBtn.style.color = "firebrick";
+        } else {
+            scoreBtn.style.color = "black";
+        }
+        if (score > 0) {
             checkalien1Collision()
             checkalien2Collision()
             checkStarCollision()
@@ -223,7 +227,7 @@ const checkStarCollision = () => {
 const endGame = () => {
     clearInterval(gameLoop)
     document.removeEventListener("keydown", movementHandler);
-    stateBtn.addEventListener("click", startShit);
+    scoreBtn.addEventListener("click", startShit);
     isGameOver = true;
     stateBtn.innerText = "GAMEOVER"
     scoreBtn.innerText = "RESTART?"
