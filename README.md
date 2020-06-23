@@ -1,28 +1,27 @@
 # Personal-Space
 
-Continuous vertical scrolling game, wherein the Player collects Stars and avoids Aliens.
-* Mobile-oriented design
-* Consistent, fingertip-size targets
-* Clean interface
-* Language/Colorblind-friendly
-* Intuitive gameplay
-* Chill retro vibes
+Continuous vertical scrolling game, wherein the Player collects Stars and avoids Aliens. I envisioned making a relaxing game that I could turn into a phone app that I could play in low-light conditions to relax before bed. The current iteration of this game lacks the additional features of "Obstacles", "Items", kawaii pixellated images, and lofi music/effects that I desire, but I will continue working on this as a passion project and am quite fond of it's unrefined appearance as it still speaks to the aesthetic I was pursuing.
+
+* Mobile-oriented design (will learn how to utilize this later, for now stick to a small play area)
+* Consistent, fingertip-size targets (between 50-80px?)
+* Clean interface (this goes hand-in-hand with accessibility and intuitive-gameplay)
+* Language/Colorblind-friendly (use very different images/shapes for game contents)
+* Intuitive gameplay (so that an english language "how to play" is not needed)
+* Chill retro vibes (the eighties was the best week of my life)
 ## WIREFRAME
 ![](https://i.imgur.com/IwWzCY5.jpg)
 ## MINIMUM VIABLE PRODUCT (MVP)
 * Canvas game board
 * WASD & arrow mobility
 * Objects
-    * Stars (completed)
-    * Aliens (incomplete w/o multiple possible trajectory)
+    * Stars
+    * Aliens
 * State Button (load screen in neutral, then flips start/stop)
 * Score Button (+1 stars, -5 aliens, 0 = game over)
 * Collision Detection
-* End game on alien impact
-## STRETCH
 * EndGame Condition
     * Score = 0
-* Add random x-trajectory for Aliens
+## STRETCH
 * Deploy Special
     * Use # of score to deploy alienEMP with duration
 * Image Variations (3 or 5 randomized)
@@ -31,13 +30,13 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
 * Obstacles
     * Clouds = visual obstacle
     * Planets = mobility obstacle
-* Items
+* Items (these will render as being a transparent overlay on the Player, with an invisible )
     * Bubble
-        * Shield with duration
+        * Player sheild with duration
     * Chevron
-        * Player speed increase
+        * Player speed increase with duration
     * Lighting
-        * Objects double value
+        * New Objects (both Alien and Stars) double value for duration
 ## TECH
 * HTML Canvas
 * CSS
@@ -79,10 +78,12 @@ Continuous vertical scrolling game, wherein the Player collects Stars and avoids
     * Object/Item rate
 * Canvas maximum Object/Item count
 * Item effects
-* Attack capability
+* Having the Alien Objects enter Canvas from not only the left/top (0x/0y axis), but also the right/bottom side of the screen--couldn't figure that one out.
 ## SOURCES
 * Canvas Crawler for dem boxes
 * TicTacToe for gameState button (load game in neutral)
 * TempConverter for gameScore button (display score on button, deploy special on click)
 * Weston for always 'splainin dem fn's
 * Karly & Sarah for Mommin' me
+* TA's Lemon and Yoshi for helping me articulate logic for features that I wanted in the game.
+* Anna for taking initiative to setup 1:1 TA time for me in a class where instructional staff is FAR outnumbered!❤️
