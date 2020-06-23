@@ -1,10 +1,8 @@
-//STRETCH GOALS FOR DAYS!!!!!
-//TODO: add additional game features (alien1s/stars of various speed/value, and items/items of various effects)
-//TODO: mutiple Objects on Canvas: loop w restrictions how little/much objects visible, generate objs within loop
-//TODO: ^^^ separate array of properties (colors, speed) Math.random OR integers
-
-
-
+///////////////////////// STRETCH GOALS FOR DAYS!!!!!
+// TODO: add additional game features (alien1s/stars of various speed/value, and items/items of various effects)
+// TODO: mutiple Objects on Canvas: loop w restrictions how little/much objects visible, generate objs within loop
+// TODO: ^^^ separate array of properties (colors, speed) Math.random OR integers
+/////////////////////////
 
 
 var isGameOver = false;
@@ -21,11 +19,11 @@ let gameLoop;
 
 
 const movementHandler = (e) => {
-    //this controls if there is a keyboard event happening when the game window is highlighted--still activate game objects
+    // IF THERE IS A KEYBOARD EVENT HAPPENING WHEN THE GAME WINDOW IS HIGHLIGHTED, STILL ACTIVATE GAME MOVEMENT (YOSHI!)
     e = e || window.event;
-    //use "keyCode" for both universal keys, not just "key" for letter keys!!
+    // USE "keyCode" FOR ALL KEYBOARD EVENTS, NOT JUST "key" FOR LETTER KEYBOARD EVENTS
     switch(e.keyCode){
-        //WASD
+        // WASD
         case 87:
             player.y = player.y - 50;
             break;
@@ -38,7 +36,7 @@ const movementHandler = (e) => {
         case 68:
             player.x = player.x + 50;
             break;
-        //ARROWS
+        // ARROWS
         case 38:
             player.y = player.y - 50;
             break;
@@ -56,10 +54,16 @@ const movementHandler = (e) => {
 
 
 
+///////////////////////////////////////////////////////////////////////////
+// FIXME: PREVENT PLAYER MOVEMENT DISAPPEARING OFF CANVAS
+///////////////////////////////////////////////////////////////////////////
+
+
+
 // GAME STARTS WHEN BUTTON IS CLICKED
 let player = new gameObject(225, 400, "gray", 50, 50);
 let alien1 = new alien1Object(this.x = Math.random() * gameZone.width, 0, "green", 50, 50);
-let alien2 = new alien1Object(this.x = Math.random() * gameZone.width, 0, "red", 50, 50);
+let alien2 = new alien2Object(this.x = Math.random() * gameZone.width, 0, "crimson", 50, 50);
 let star = new starObject(this.x = Math.random() * gameZone.width, 0, "gold", 50, 50);
 stateBtn.addEventListener("click", startShit)
 stateBtn.innerText = "START";
@@ -78,6 +82,7 @@ const gameTick = () => {
         scoreBtn.innerText = score
         if (score > 0){
             checkalien1Collision()
+            checkalien2Collision()
             checkStarCollision()
         } else {
             endGame()
@@ -120,7 +125,6 @@ function alien1Object(x, y, color, width, height){
         }
     }
 }
-
 function alien2Object(x, y, color, width, height){
     this.x = x;
     this.y = y;
@@ -132,16 +136,15 @@ function alien2Object(x, y, color, width, height){
     this.render = function(){
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height)
-        this.y = this.y + 15
+        this.y = this.y + 20
         if (this.y > gameZone.height){
-            this.y = 0;
+            this.y = 0
             this.alive = true;
             this.prevAlive = true;
             this.x = Math.random() * gameZone.width
         }
     }
 }
-
 function starObject(x, y, color, width, height){
     this.x = x;
     this.y = y;
@@ -170,6 +173,8 @@ function startShit(event) {
     score = 10;
     alien1.x = Math.random() * gameZone.width;
     alien1.y = 0;
+    alien2.x = Math.random() * gameZone.width;
+    alien2.y = 0;
     star.x = Math.random() * gameZone.width;
     star.y = 0;
     stateBtn.innerText = "GAME ON!"
@@ -224,12 +229,13 @@ const checkStarCollision = () => {
 }
 
 
+
 // ENDGAME W RESTART FUNCTIONALITY
 const endGame = () => {
     clearInterval(gameLoop)
     document.removeEventListener("keydown", movementHandler);
     stateBtn.addEventListener("click", startShit);
     isGameOver = true;
-    stateBtn.innerText = "RESTART?"
-    scoreBtn.innerText = "GAME OVER"
+    stateBtn.innerText = "GAMEOVER"
+    scoreBtn.innerText = "RESTART?"
 }
