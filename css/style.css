@@ -23,7 +23,7 @@ div {
     justify-content: center;
 }
 canvas {
-    background-color: darkblue;
+    background-color: black;
     outline: 8px solid;
 }
 button{

@@ -118,6 +118,25 @@ function gameObject(x, y, color, width, height){
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
+
+
+
+//////////////////////////////////////////////////
+// FIXME: figure out canvas wrapping player movement!!!
+//////////////////////////////////////////////////
+// function player(x, y){
+//     this.x = x;
+//     this.y = y;
+//     if (this.y > gameZone.height){
+//         this.y = 0;
+//         this.alive = true;
+//         this.prevAlive = true;
+//         this.x = Math.random() * gameZone.width
+//     }
+// }
+
+
+
 // GAME OBJECTS (THAT ARE ALSO CALLED "OBJECTS" IN MY README, BUT ARE DIFFERENT FROM FUTURE "OBSTACLES/ITEMS" LOL)
 function alien1Object(x, y, color, width, height){
     this.x = x;
@@ -150,7 +169,7 @@ function alien2Object(x, y, color, width, height){
     this.render = function(){
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height)
-        this.y = this.y + 20
+        this.y = this.y + 15
         if (this.y > gameZone.height){
             this.y = 0
             this.alive = true;
